@@ -4,10 +4,11 @@ class NetworkByteSwap extends Expr {
   NetworkByteSwap () {
     // TODO: replace <class> and <var>
     exists(MacroInvocation m |
-        m.getMacro().getName().regexpMatch("ntohl|ntohs|ntohll")
-    )
+        m.getMacroName().regexpMatch("ntohl|ntohs|ntohll") | 
+        m.getExpr() = this
+    )   
   } 
 }
 
 from NetworkByteSwap n
-select n, "Network byte swap"
+select n, "Network Byte Swap"
